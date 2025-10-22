@@ -60,6 +60,25 @@
             font-size: 0.95em;
         }
 
+        .profile-picture {
+            width: 150px;  /* Atur ukuran foto */
+            height: 150px;
+            border-radius: 50%; /* Membuat foto jadi bulat */
+            object-fit: cover;  /* Memastikan foto pas tanpa penyok */
+            margin-bottom: 20px; /* Memberi jarak ke teks di bawahnya */
+            border: 4px solid white; /* Opsional: bingkai putih */
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            
+            /* Ini kuncinya: siapkan animasi transisi */
+            transition: all 0.3s ease; 
+        }
+
+        .profile-picture:hover {
+            /* Ini efeknya: foto naik 8px dan bayangan membesar */
+            transform: translateY(-8px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+        }
+
         /* === PERUBAHAN 3: <nav> dijadikan sidebar === */
         nav {
             /* background: white; <-- Dihapus */
@@ -222,6 +241,7 @@
         <div class="main-content">
 
             <header>
+                <img src="HUHUHU.jpg" alt="Foto Profil" class="profile-picture">
                 <div class="header-content">
                     <h1>Kenneth Moses Saragih</h1>
                     <p class="subtitle">18224093, K1 II2100</p>
@@ -230,9 +250,9 @@
             </header>
 
             <section id="tentang" class="content-section">
-                <h2>All About Me</h2>
+                <h2>UTS 1 - All About Me</h2>
                 <h3>
-                    Prolog
+                    
                 </h3>
                 <p>
                     Halo semua, perkenalkan aku <b>Kenneth Moses Saragih</b>, mahasiswa program studi Sistem dan Teknologi Informasi di ITB.
@@ -256,22 +276,27 @@
                 <p>
                     Meskipun genre di dalam hidupku selalu berubah, aku percaya bahwa akan tetap ada semangat 
                     di dalam hidupku yang selalu ada padaku dan menemaniku untuk terus berkembang sedikit demi
-                     sedikit. Aku tidak akan pernah tahu genre apa yang menantiku di kemudian hari, mungkin sebuah 
-                     genre adventure yang penuh kekacauan, atau drama yang tenang. Namun, aku yakin bahwa setiap
-                     langkah yang kujalani saat ini adalah awal mula dari sebuah perjalanan yang penuh makna.
+                    sedikit. Aku tidak akan pernah tahu genre apa yang menantiku di kemudian hari, mungkin sebuah 
+                    genre adventure yang penuh kekacauan, atau drama yang tenang. Namun, aku yakin bahwa setiap
+                    langkah yang kujalani saat ini adalah awal mula dari sebuah perjalanan yang penuh makna.<br>
+                    <br>
+                    Salam kenal semuanya!
                 </p>
             </section>
 
             <section id="song" class="content-section">
-                <h2>My Song For You</h2>
+                <h2>UTS 2 - My Song For You</h2>
                 <div class="card-grid">
                     <div class="card">
-                        <h3>Pendidikan</h3>
-                        <p>Mahasiswa Program Studi [Nama Program] di Universitas [Nama Universitas]. Fokus pada pengembangan kemampuan teknis dan soft skills.</p>
+                        <h3>Hope This Isn't The End</h3>
+                        <audio controls style="width: 100%; margin-top: 15px;">
+                        <source src="Hope This Isn't The End.mp3" type="audio/mpeg">
+                        </audio>
+                        <p></p>
                     </div> 
                 </div>
+                <h3>Lirik</h3>
                 <p>
-                    Lyrics : <br>
                     [Verse 1]<br>
                     Polaroids are turning yellow now<br>
                     On my bedroom wall<br>
@@ -321,49 +346,104 @@
                     Golden... we stay golden...<br>
                     We won't burn out...<br>
                 </p>
+                <h3>Makna Lirik</h3>
+
+                <p>Secara keseluruhan, lagu ini adalah sebuah surat yang melankolis untuk <b></b>persahabatan yang teruji oleh jarak</b>. 
+                    Liriknya menceritakan perasaan seorang sahabat yang merindukan masa SMA (<b>"golden days"</b>), masa di mana mereka 
+                    berenam selalu bersama, penuh tawa, dan merasa bisa menaklukkan dunia. Kini, di dunia perkuliahan yang baru dan 
+                    terpisah (<b>"different towns"</b>), ia merasakan dinginnya kenyataan dan jarak yang membuat komunikasi terasa hampa (<b>"wave of static"</b>). 
+                    Namun, inti dari lagu ini adalah sebuah keyakinan yang teguh. Meskipun mereka tersebar, ikatan mereka abadi. Mereka diibaratkan
+                    sebagai <b>"constellations"</b> (rasi bintang); sekumpulan bintang individu yang meskipun terpisah jauh, selamanya membentuk satu pola
+                    yang sama di langit, saling menjadi penunjuk arah dan pengingat akan <b>"rumah"</b> bagi satu sama lain.
+                </p>
             </section>
 
             <section id="stories" class="content-section">
-                <h2>My Stories For You</h2>
+                <h2>UTS 3 - My Stories For You</h2>
                 <h3>
-                    WIP
+                    Konsekuensi
                 </h3>
+                <p>Oleh : Kenneth Moses Saragih</p>
                 <p>
-                    WIP WIP
+                    Bagi aku di usia sembilan tahun, lembar ulangan harian adalah alas corat-coret yang ideal. Matematika adalah deretan angka membosankan. IPA adalah hafalan yang tidak relevan. Belajar adalah rutinitas yang kuhadapi dengan setengah hati.<br>
+                    <br>Ibuku, dengan kesabaran yang tak pernah kupahami, sering duduk di sampingku. "Serius sedikit," katanya sambil mengelus kepalaku. "Banyak anak di luar sana yang ga bisa sekolah tau."<br>
+                    <br>Kalimat itu masuk telinga kanan, keluar telinga kiri. Apa yang aku tahu soal "luar sana"? Duniaku adalah sekolah, dan sekolah itu membosankan. Lalu, rapor itu dibagikan.<br>
+                    <br>Warna merahnya menyala lebih terang dari spidol guru. Tercetak angka berwarna merah untuk tiga mata pelajaran sekaligus. Pelajaran yang, seperti yang aku tahu, sebenarnya tidak sulit.<br>
+                    <br>Rasa malu adalah racun yang bekerja lambat. Awalnya hanya sebal. Tapi rasa malu itu memuncak ketika aku harus duduk di kelas yang sama, di sore hari, sementara teman-temanku bermain kejar-kejaran di lapangan. Aku tertinggal. Kebosanan awalku telah berubah menjadi aib.<br>
+                    <br>Puncaknya bukan pada nilai. Puncaknya terjadi di ruang guru yang senyap. Wali kelasku, Bu Cicil, menatapku, lalu menatap lembar nilaiku. Beliau tidak marah. Beliau terlihat bingung, dan itu jauh lebih buruk.<br>
+                    <br>"Saya tidak mengerti," katanya pelan, suaranya nyaris berbisik. "Dulu nilai kamu bagus semua, Ken. Kenapa sekarang ada yang merah? Sayang kalau dibuang begitu saja."<br>
+                    <br>"Dibuang begitu saja."<br>
+                    <br>Kalimat itu menghantamku. Tiba-tiba, aku teringat nasehat Ibuku. "Banyak anak di luar sana..."<br>
+                    <br>Di momen itu, aku sa    dar. Aku telah diberi sebuah privilege untuk belajar, untuk duduk di bangku itu, dan aku telah membuangnya seolah itu sampah. Anak-anak yang Ibu maksud, mereka yang tidak sekolah, mungkin akan memegang rapor merah itu dengan bangga, karena setidaknya mereka punya rapor.<br>
+                    <br>Rasa maluku berubah menjadi api. Aku mulai belajar, bukan lagi karena takut remedial, tapi karena aku merasa berhutang. Aku berhutang pada bangku yang kududuki, pada buku yang kumiliki, dan pada Ibuku.<br>
+                    <br>Api itu tidak pernah padam. Utang itu membawa aku melampaui SD, SMP, SMA, hingga akhirnya mengantar aku ke gerbang ITB. Tempat di mana aku mendengar sebuah frasa yang mendorong aku untuk melakukan apa yang aku lakukan sekarang. Frasa itu berbunyi seperti ini. <strong>“Konsekuensi dari orang yang terdidik adalah mendidik orang lain.”</strong> <br>
+                    <br>Aku berdiri di sebuah ruangan di dalam masjid di Kebon Bibit, Bandung, sebagai pengajar Skhole-ITB Mengajar. Papan tulis yang dimiliki sangat kecil, spidolnya nyaris kering, tapi semangat di ruangan ini jauh lebih menyala daripada api apa pun.<br>
+                    <br>Sore itu, sambil menjelaskan sebuah rumus sederhana, aku teringat pada diriku sendiri di kelas remedial yang sepi belasan tahun lalu. Bedanya, anak-anak ini berebut untuk maju ke papan tulis itu. Dulu, aku punya segalanya tapi membuangnya. Kini, mereka punya sangat sedikit, namun memperjuangkannya dengan antusiasme penuh.<br>
+                    <br>Dan aku sadar, aku tidak lagi sedang membayar utang. Aku sedang memastikan api yang pernah hampir padam di diriku, kini menyala lebih terang di tempat lain.<br>
                 </p>
             </section>
 
             <section id="shape" class="content-section">
-                <h2>My SHAPE</h2>
-                <p>
-                    WIP
-                </p>
+                <h2>UTS 4 - My SHAPE</h2>
+                <h3>SHAPE Framework</h3>
                 <div class="card-grid" style="margin-top: 30px;">
                     <div class="card">
-                        <h3>S</h3>
-                        <p>WIP</p>
+                        <h3>S - Spiritual Gifts / Strengths (Karunia / Kekuatan)</h3>
+                        <p><strong>Rasa Penasaran yang Tinggi</strong>: Aku memiliki dorongan internal yang kuat untuk selalu bertanya "kenapa" dan memahami berbagai hal secara lebih mendalam, tidak hanya puas di permukaan.</p>
+                        <p><strong>Resilience dan Pantang Menyerah</strong>: Aku cenderung tidak mudah berhenti ketika menghadapi kesulitan atau kegagalan. Aku akan mencari cara lain atau bangkit kembali untuk terus maju.</p>
+                        <p><strong>Yakin atas Kemampuan Diri Sendiri</strong>: Aku memiliki kepercayaan dasar pada kemampuan aku untuk belajar, beradaptasi, dan menyelesaikan tugas atau tantangan yang diberikan kepada aku.</p>
                     </div>
                     <div class="card">
-                        <h3>H</h3>
-                        <p>WIP</p>
+                        <h3>H - Heart (Minat, Nilai, Kepedulian)</h3>
+                        <p><strong>Menjunjung Nilai Kejujuran</strong>: Integritas dan transparansi adalah prinsip yang sangat penting bagi aku. Aku menghargai keterbukaan dalam segala interaksi.</p>
+                        <p><strong>Berminat dalam Pendidikan</strong>: Aku memiliki gairah (passion) yang tulus terhadap dunia pendidikan, baik dalam proses belajar-mengajar maupun potensinya untuk pemberdayaan.</p>
+                        <p><strong>Komunitas Pengabdian Masyarakat</strong>: Aku merasa terpanggil dan memiliki kepedulian untuk memberikan kontribusi nyata serta dampak positif bagi masyarakat di sekitar aku.</p>
                     </div>
                     <div class="card">
-                        <h3>A</h3>
-                        <p>WIP</p>
+                        <h3>A - Abilities (Kemampuan Andal)</h3>
+                        <p><strong>Komunikasi yang Baik</strong>: Aku mampu menyampaikan ide dan informasi secara jelas, efektif, dan mudah dipahami, baik secara lisan maupun tulisan.</p>
+                        <p><strong>Teliti dan Telaten</strong>: Aku memiliki kecenderungan alami untuk memperhatikan detail-detail kecil dan sabar dalam mengerjakan tugas yang kompleks hingga tuntas.</p>
+                        <p><strong>Kepemimpinan</strong>: Aku memiliki keterampilan untuk mengarahkan, memotivasi, dan mengoordinasikan sebuah tim agar dapat bekerja sama mencapai tujuan.</p>
+                        <p><strong>Mengajar</strong>: Aku mampu membagikan pengetahuan dan membimbing orang lain untuk memahami suatu konsep atau keterampilan baru.</p>
                     </div>
                     <div class="card">
-                        <h3>P</h3>
-                        <p>WIP</p>
+                        <h3>P - Personality (Gaya Kerja & Kolaborasi)</h3>
+                        <p><strong>Pembelajar Sepanjang Hayat</strong>: Aku adalah tipe orang yang sangat menikmati proses belajar itu sendiri dan selalu antusias untuk mempelajari berbagai topik baru.</p>
+                        <p><strong>Kolaboratif</strong>: Aku merasa nyaman dan lebih suka bekerja dalam sebuah tim, serta percaya bahwa hasil terbaik dicapai melalui kerja sama.</p>
+                        <p><strong>Strategis</strong>: Aku cenderung berpikir jangka panjang dan melihat gambaran besar (big picture) dalam merencanakan sesuatu atau mengambil keputusan.</p>
                     </div>
                     <div class="card">
-                        <h3>E</h3>
-                        <p>WIP</p>
+                        <h3>E - Experiences (Pengalaman Pembentuk)</h3>
+                        <p><strong>Organisasi (Volunteer Pendidikan)</strong>: Aku terlibat aktif sebagai staf di sebuah organisasi sukarelawan di bidang pendidikan, yang memberi Aku banyak pelajaran praktis.</p>
+                        <p><strong>Kepanitiaan</strong>: Aku memiliki berbagai pengalaman dalam mengelola dan mengeksekusi acara atau proyek sebagai bagian dari sebuah kepanitiaan.</p>
+                        <p><strong>Pelajaran dari Kegagalan</strong>: Aku pernah mengalami kegagalan signifikan yang membentuk cara pandang aku dan mengajarkan aku bahwa kegagalan bukanlah akhir dari segalanya.</p>
                     </div>
+                    <h3>
+                        Piagam Diri (Self-Charter)
+                    </h3>
+                    <p>
+                        Aku berkomitmen untuk menggunakan Rasa Penasaran (S) dan Ketelitianku (A) sebagai fondasi untuk belajar (P) dan memahami setiap masalah secara mendalam.
+                        Dengan berpegang teguh pada nilai Kejujuran (H), aku mendedikasikan diri untuk berkontribusi nyata dalam bidang Pendidikan dan Pengabdian Masyarakat (H), menggunakan Resilience (S) dan Keyakinan Diri (S) untuk menghadapi setiap tantangan.<br>
+                        <br>
+                        Misi hidupku adalah menggunakan kemampuan Strategis (P) dan Kepemimpinan (A) untuk merancang dan menggerakkan ekosistem pembelajaran (H) dan pelayanan komunitas (H) yang bermakna, jujur, dan berkeadilan. Semua ini aku lakukan berlandaskan nilai-nilai inti, yaitu: Kejujuran, Keberanian (Resilience), Mutu (Ketelitian), Pertumbuhan (Pembelajar), dan Keberpihakan pada komunitas.<br>
+                    </p>
+                    <h3>
+                        Identitas Naratif 
+                    </h3>
+                    <p>
+                        Dulu, aku melihat diriku sebagai "Sang Peserta yang Ragu". Ceritaku adalah tentang menjadi bagian dari organisasi atau kepanitiaan (E), belajar banyak hal (P), namun masih terbayangi oleh rasa takut akan kegagalan. Aku memiliki keyakinan diri, namun keyakinan itu mudah goyah saat menghadapi rintangan besar.<br>
+                        <br>
+                        Kini, aku sadar narasiku telah berevolusi. Aku melihat diriku sebagai "Sang Pemimpin Pembelajar yang Tangguh".<br>
+                        <br>
+                        Ceritaku bukan lagi tentang menghindari kegagalan; ini tentang belajar dari kegagalan (E). Aku menemukan bahwa Resilience (S) adalah kekuatanku yang sebenarnya. Pengalaman di organisasi (E) mengajarkanku bahwa Kepemimpinan (A) dan kemampuan Mengajar (A) adalah cara terbaik untuk mewujudkan misi Pendidikan dan Pengabdian Masyarakat (H).<br>
+                        <br>
+                        Aku belajar bahwa skill terpenting bukanlah sekadar teliti dalam melaksanakan tugas, tapi memiliki visi Strategis (P) dan keberanian untuk memimpin secara Kolaboratif (P) untuk mencapai tujuan bersama.
+                    </p>
                 </div>
             </section>
 
             <section id="review" class="content-section">
-                <h2>My Personal Review</h2>
+                <h2>UTS 5 - My Personal Review</h2>
                 <p>WIP</p>
             </section>
 
