@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>II2100 Komunikasi Interpersonal dan Publik</title>
+    <title>II2100 - Kenneth Moses Saragih</title>
     <style>
         * {
             margin: 0;
@@ -19,19 +19,18 @@
             min-height: 100vh;
         }
 
-        /* === PERUBAHAN 1: Container dibuat jadi flexbox === */
+        /* === Container Layout === */
         .container {
-            max-width: 1200px; /* Lebarkan agar sidebar dan konten muat */
+            max-width: 1200px;
             margin: 0 auto;
             padding: 40px 20px;
-            display: flex; /* Aktifkan Flexbox */
-            gap: 40px; /* Beri jarak 40px antara sidebar dan konten */
+            display: flex;
+            gap: 40px;
         }
 
-        /* === PERUBAHAN 2: CSS baru untuk wrapper konten utama === */
         .main-content {
-            flex-grow: 1; /* Ambil semua sisa ruang yang ada */
-            min-width: 0; /* Perbaikan bug flexbox agar tidak overflow */
+            flex-grow: 1;
+            min-width: 0;
         }
 
         header {
@@ -61,51 +60,41 @@
         }
 
         .profile-picture {
-            width: 150px;  /* Atur ukuran foto */
+            width: 150px;
             height: 150px;
-            border-radius: 50%; /* Membuat foto jadi bulat */
-            object-fit: cover;  /* Memastikan foto pas tanpa penyok */
-            margin-bottom: 20px; /* Memberi jarak ke teks di bawahnya */
-            border: 4px solid white; /* Opsional: bingkai putih */
+            border-radius: 50%;
+            object-fit: cover;
+            margin-bottom: 20px;
+            border: 4px solid white;
             box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-            
-            /* Ini kuncinya: siapkan animasi transisi */
             transition: all 0.3s ease; 
         }
 
         .profile-picture:hover {
-            /* Ini efeknya: foto naik 8px dan bayangan membesar */
             transform: translateY(-8px);
             box-shadow: 0 10px 25px rgba(0,0,0,0.2);
         }
 
-        /* === PERUBAHAN 3: <nav> dijadikan sidebar === */
+        /* === Sidebar Navigation === */
         nav {
-            /* background: white; <-- Dihapus */
-            background: linear-gradient(to right, rgba(255, 255, 255, 0), white 99%); /* <--- TAMBAHKAN BARIS INI */
+            background: linear-gradient(to right, rgba(255, 255, 255, 0), white 99%);
             padding: 0;
             border-radius: 10px;
             box-shadow: 0 5px 20px rgba(0,0,0,0.1);
-            
-            /* Properti untuk Sidebar */
             flex-basis: 280px;
             flex-shrink: 0;
-
-            /* Properti STICKY */
             position: sticky;
             top: 40px;
             max-height: calc(100vh - 80px);
             overflow-y: auto;
         }
 
-        /* === PERUBAHAN 4: Arah navigasi diubah jadi vertikal === */
         nav ul {
             list-style: none;
             display: flex;
-            flex-direction: column; /* Susun item secara vertikal */
+            flex-direction: column;
         }
 
-        /* === PERUBAHAN 5: Style link disesuaikan untuk sidebar === */
         nav a {
             display: block;
             padding: 15px 25px;
@@ -113,20 +102,28 @@
             color: #2c3e50;
             font-weight: 500;
             transition: all 0.3s ease;
-            /* flex: 1; <-- Dihapus */
-            /* text-align: center; <-- Dihapus (default jadi left) */
             font-size: 12px;            
-            /* Ganti border-bottom jadi border-left */
             border-left: 4px solid transparent; 
         }
 
         nav a:hover {
             background: #ecf0f1;
             color: #3498db;
-            /* Ganti border-bottom-color jadi border-left-color */
             border-left-color: #3498db; 
         }
 
+        .nav-separator {
+            padding: 20px 25px 5px 25px;
+            font-size: 0.85em;
+            font-weight: bold;
+            color: #95a5a6;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-top: 10px;
+            border-top: 1px solid #eee;
+        }
+
+        /* === Content Styling === */
         .content-section {
             background: white;
             border-radius: 10px;
@@ -143,23 +140,40 @@
             padding-bottom: 10px;
         }
 
+        .content-section h3 {
+             color: #2c3e50;
+             margin-top: 30px;
+             margin-bottom: 15px;
+             font-size: 1.5em;
+        }
+
         .content-section p {
             color: #555;
             margin-bottom: 15px;
             text-align: justify;
         }
 
+        /* === Card Styling === */
+        /* Grid Biasa untuk UTS */
         .card-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(500px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); 
             gap: 20px;
             margin-top: 20px;
+        }
+
+        /* Grid Horizontal Lebar untuk UAS */
+        .card-grid-wide {
+            display: grid;
+            grid-template-columns: 1fr; /* Memaksa 1 kolom penuh (Horizontal) */
+            gap: 25px;
+            margin-top: 25px;
         }
 
         .card {
             background: #f8f9fa;
             border-left: 4px solid #3498db;
-            padding: 20px;
+            padding: 25px; /* Padding diperbesar sedikit */
             border-radius: 5px;
             transition: transform 0.3s ease;
         }
@@ -169,15 +183,47 @@
             box-shadow: 0 5px 15px rgba(0,0,0,0.1);
         }
 
-        .card h3 {
+        .card h3, .card h4 {
             color: #2c3e50;
-            margin-bottom: 10px;
+            margin-bottom: 15px;
+            font-size: 1.3em;
+            font-weight: bold;
         }
 
         .card p {
             color: #7f8c8d;
-            font-size: 0.9em;
+            font-size: 1em; /* Ukuran font standar agar terbaca jelas */
             margin: 0;
+            text-align: justify; /* Justify text inside cards */
+            line-height: 1.7;
+        }
+        
+        /* List di dalam card */
+        .card ul {
+            margin-left: 20px;
+            margin-top: 10px;
+            color: #7f8c8d;
+        }
+        
+        .card li {
+            margin-bottom: 8px;
+        }
+
+        /* Style untuk tombol download */
+        .btn-download {
+            display: inline-block;
+            background-color: #27ae60;
+            color: white;
+            padding: 10px 20px;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: bold;
+            margin-top: 10px;
+            transition: background 0.3s;
+        }
+        
+        .btn-download:hover {
+            background-color: #219150;
         }
 
         footer {
@@ -186,43 +232,34 @@
             color: #7f8c8d;
         }
 
+        /* === Mobile Responsive === */
         @media (max-width: 768px) {
-            /* === PERUBAHAN 6: Perbaikan untuk tampilan HP === */
             .container {
-                flex-direction: column; /* Konten dan sidebar disusun vertikal */
+                flex-direction: column;
             }
             
             nav {
-                flex-basis: auto; /* Lebar sidebar jadi otomatis */
+                flex-basis: auto;
+                position: static;
+                max-height: none;
             }
             
-            /* Kode media query lama kamu */
-            header {
-                padding: 40px 20px;
-            }
-
-            .header-content h1 {
-                font-size: 1.8em;
-            }
-
-            nav ul {
-                flex-direction: column; /* Sudah diubah di atas, tapi tidak apa-apa */
-            }
-
-            nav a {
-                border-bottom: none;
-                border-left: 4px solid transparent; /* Sudah diubah di atas */
-            }
-
-            nav a:hover {
-                border-left-color: #3498db; /* Sudah diubah di atas */
-                border-bottom: none;
-            }
-
-            .content-section {
-                padding: 25px;
+            .card-grid, .card-grid-wide {
+                 grid-template-columns: 1fr;
             }
         }
+
+        /* Style untuk gambar Innovation */
+        .innovation-image {
+            width: 100%;
+            max-width: 800px; /* Membatasi lebar agar tidak terlalu besar di layar lebar */
+            height: auto;     /* Menjaga proporsi gambar */
+            border-radius: 8px; /* Membuat sudut gambar melengkung sedikit */
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1); /* Memberi efek bayangan halus */
+            margin: 20px 0;   /* Memberi jarak atas dan bawah */
+            display: block;   /* Memastikan gambar berdiri sendiri di baris baru */
+        }
+
     </style>
 </head>
 <body>
@@ -230,11 +267,19 @@
 
         <nav>
             <ul>
+                <li class="nav-separator">UTS Portofolio</li>
                 <li><a href="#tentang">UTS 1 - All About Me</a></li>
                 <li><a href="#song">UTS 2 - My Song For You</a></li>
                 <li><a href="#stories">UTS 3 - My Stories For You</a></li>
                 <li><a href="#shape">UTS 4 - My SHAPE</a></li>
-                <li><a href="#review">UTS 5 - My Personal Review </a></li>
+                <li><a href="#review">UTS 5 - My Personal Review</a></li>
+
+                <li class="nav-separator">UAS Masterpiece</li>
+                <li><a href="#uas1">UAS 1 - My Concepts</a></li>
+                <li><a href="#uas2">UAS 2 - My Opinions</a></li>
+                <li><a href="#uas3">UAS 3 - My Innovations</a></li>
+                <li><a href="#uas4">UAS 4 - My Knowledge</a></li>
+                <li><a href="#uas5">UAS 5 - My Professional Reviews</a></li>
             </ul>
         </nav>
 
@@ -244,16 +289,14 @@
                 <img src="HUHUHU.jpg" alt="Foto Profil" class="profile-picture">
                 <div class="header-content">
                     <h1>Kenneth Moses Saragih</h1>
-                    <p class="subtitle">K1 - NIM 18224093 </p>
-                    <p class="bio">Selamat datang di Repository Tugas II2100 Komunikasi Interpersonal dan Publik. </p>
+                    <p class="subtitle">K1 - NIM 18224093</p>
+                    <p class="bio">Selamat datang di Repository Tugas II2100 Komunikasi Interpersonal dan Publik.</p>
                 </div>
             </header>
 
             <section id="tentang" class="content-section">
                 <h2>UTS 1 - All About Me</h2>
-                <h3>
-                    Perkenalan
-                </h3>
+                <h3>Perkenalan</h3>
                 <p>
                     Halo semua, perkenalkan aku <b>Kenneth Moses Saragih</b>, mahasiswa program studi Sistem dan Teknologi Informasi di ITB.
                     Kita semua punya preferensi: jenis makanan, musik, atau genre film. Aku pribadi menyukai
@@ -263,9 +306,9 @@
                 </p>
                 <p>
                     Jujur, aku bukanlah orang yang memiliki ambisi yang besar ataupun orang yang sudah punya
-                     tujuan saat aku menginjakkan kaki ke dunia perkuliahan ini. Tidak jarang aku merasa menyesal
-                     masuk ke dunia yang aku jalani sekarang. Namun itulah kehidupan, mustahil jika aku hanya
-                     berada di satu genre yang sama seumur hidupku. 
+                    tujuan saat aku menginjakkan kaki ke dunia perkuliahan ini. Tidak jarang aku merasa menyesal
+                    masuk ke dunia yang aku jalani sekarang. Namun itulah kehidupan, mustahil jika aku hanya
+                    berada di satu genre yang sama seumur hidupku. 
                 </p>
                 <p>
                     Di tengah-tengah keresahanku ternyata tetap ada hal-hal yang membuatku semangat kembali. 
@@ -348,7 +391,7 @@
                 </p>
                 <h3>Makna Lirik</h3>
 
-                <p>Secara keseluruhan, lagu ini adalah sebuah surat yang melankolis untuk <b></b>persahabatan yang teruji oleh jarak</b>. 
+                <p>Secara keseluruhan, lagu ini adalah sebuah surat yang melankolis untuk <b>persahabatan yang teruji oleh jarak</b>. 
                     Liriknya menceritakan perasaan seorang sahabat yang merindukan masa SMA (<b>"golden days"</b>), masa di mana mereka 
                     berenam selalu bersama, penuh tawa, dan merasa bisa menaklukkan dunia. Kini, di dunia perkuliahan yang baru dan 
                     terpisah (<b>"different towns"</b>), ia merasakan dinginnya kenyataan dan jarak yang membuat komunikasi terasa hampa (<b>"wave of static"</b>). 
@@ -360,9 +403,7 @@
 
             <section id="stories" class="content-section">
                 <h2>UTS 3 - My Stories For You</h2>
-                <h3>
-                    Konsekuensi
-                </h3>
+                <h3>Konsekuensi</h3>
                 <p>Oleh : Kenneth Moses Saragih</p>
                 <p>
                     Bagi aku di usia sembilan tahun, lembar ulangan harian adalah alas corat-coret yang ideal. Matematika adalah deretan angka membosankan. IPA adalah hafalan yang tidak relevan. Belajar adalah rutinitas yang kuhadapi dengan setengah hati.<br>
@@ -374,7 +415,7 @@
                     <br>"Saya tidak mengerti," katanya pelan, suaranya nyaris berbisik. "Dulu nilai kamu bagus semua, Ken. Kenapa sekarang ada yang merah? Sayang kalau dibuang begitu saja."<br>
                     <br>"Dibuang begitu saja."<br>
                     <br>Kalimat itu menghantamku. Tiba-tiba, aku teringat nasehat Ibuku. "Banyak anak di luar sana..."<br>
-                    <br>Di momen itu, aku sa    dar. Aku telah diberi sebuah privilege untuk belajar, untuk duduk di bangku itu, dan aku telah membuangnya seolah itu sampah. Anak-anak yang Ibu maksud, mereka yang tidak sekolah, mungkin akan memegang rapor merah itu dengan bangga, karena setidaknya mereka punya rapor.<br>
+                    <br>Di momen itu, aku sadar. Aku telah diberi sebuah privilege untuk belajar, untuk duduk di bangku itu, dan aku telah membuangnya seolah itu sampah. Anak-anak yang Ibu maksud, mereka yang tidak sekolah, mungkin akan memegang rapor merah itu dengan bangga, karena setidaknya mereka punya rapor.<br>
                     <br>Rasa maluku berubah menjadi api. Aku mulai belajar, bukan lagi karena takut remedial, tapi karena aku merasa berhutang. Aku berhutang pada bangku yang kududuki, pada buku yang kumiliki, dan pada Ibuku.<br>
                     <br>Api itu tidak pernah padam. Utang itu membawa aku melampaui SD, SMP, SMA, hingga akhirnya mengantar aku ke gerbang ITB. Tempat di mana aku mendengar sebuah frasa yang mendorong aku untuk melakukan apa yang aku lakukan sekarang. Frasa itu berbunyi seperti ini. <strong>“Konsekuensi dari orang yang terdidik adalah mendidik orang lain.”</strong> <br>
                     <br>Aku berdiri di sebuah ruangan di dalam masjid di Kebon Bibit, Bandung, sebagai pengajar Skhole-ITB Mengajar. Papan tulis yang dimiliki sangat kecil, spidolnya nyaris kering, tapi semangat di ruangan ini jauh lebih menyala daripada api apa pun.<br>
@@ -418,28 +459,26 @@
                         <p><strong>Kepanitiaan</strong>: Aku memiliki berbagai pengalaman dalam mengelola dan mengeksekusi acara atau proyek sebagai bagian dari sebuah kepanitiaan.</p>
                         <p><strong>Pelajaran dari Kegagalan</strong>: Aku pernah mengalami kegagalan signifikan yang membentuk cara pandang aku dan mengajarkan aku bahwa kegagalan bukanlah akhir dari segalanya.</p>
                     </div>
-                    <h3>
-                        Piagam Diri (Self-Charter)
-                    </h3>
-                    <p>
-                        Aku berkomitmen untuk menggunakan Rasa Penasaran (S) dan Ketelitianku (A) sebagai fondasi untuk belajar (P) dan memahami setiap masalah secara mendalam.
-                        Dengan berpegang teguh pada nilai Kejujuran (H), aku mendedikasikan diri untuk berkontribusi nyata dalam bidang Pendidikan dan Pengabdian Masyarakat (H), menggunakan Resilience (S) dan Keyakinan Diri (S) untuk menghadapi setiap tantangan.<br>
-                        <br>
-                        Misi hidupku adalah menggunakan kemampuan Strategis (P) dan Kepemimpinan (A) untuk merancang dan menggerakkan ekosistem pembelajaran (H) dan pelayanan komunitas (H) yang bermakna, jujur, dan berkeadilan. Semua ini aku lakukan berlandaskan nilai-nilai inti, yaitu: Kejujuran, Keberanian (Resilience), Mutu (Ketelitian), Pertumbuhan (Pembelajar), dan Keberpihakan pada komunitas.<br>
-                    </p>
-                    <h3>
-                        Identitas Naratif 
-                    </h3>
-                    <p>
-                        Dulu, aku melihat diriku sebagai "Sang Peserta yang Ragu". Ceritaku adalah tentang menjadi bagian dari organisasi atau kepanitiaan (E), belajar banyak hal (P), namun masih terbayangi oleh rasa takut akan kegagalan. Aku memiliki keyakinan diri, namun keyakinan itu mudah goyah saat menghadapi rintangan besar.<br>
-                        <br>
-                        Kini, aku sadar narasiku telah berevolusi. Aku melihat diriku sebagai "Sang Pemimpin Pembelajar yang Tangguh".<br>
-                        <br>
-                        Ceritaku bukan lagi tentang menghindari kegagalan; ini tentang belajar dari kegagalan (E). Aku menemukan bahwa Resilience (S) adalah kekuatanku yang sebenarnya. Pengalaman di organisasi (E) mengajarkanku bahwa Kepemimpinan (A) dan kemampuan Mengajar (A) adalah cara terbaik untuk mewujudkan misi Pendidikan dan Pengabdian Masyarakat (H).<br>
-                        <br>
-                        Aku belajar bahwa skill terpenting bukanlah sekadar teliti dalam melaksanakan tugas, tapi memiliki visi Strategis (P) dan keberanian untuk memimpin secara Kolaboratif (P) untuk mencapai tujuan bersama.
-                    </p>
                 </div>
+                
+                <h3>Piagam Diri (Self-Charter)</h3>
+                <p>
+                    Aku berkomitmen untuk menggunakan Rasa Penasaran (S) dan Ketelitianku (A) sebagai fondasi untuk belajar (P) dan memahami setiap masalah secara mendalam.
+                    Dengan berpegang teguh pada nilai Kejujuran (H), aku mendedikasikan diri untuk berkontribusi nyata dalam bidang Pendidikan dan Pengabdian Masyarakat (H), menggunakan Resilience (S) dan Keyakinan Diri (S) untuk menghadapi setiap tantangan.<br>
+                    <br>
+                    Misi hidupku adalah menggunakan kemampuan Strategis (P) dan Kepemimpinan (A) untuk merancang dan menggerakkan ekosistem pembelajaran (H) dan pelayanan komunitas (H) yang bermakna, jujur, dan berkeadilan. Semua ini aku lakukan berlandaskan nilai-nilai inti, yaitu: Kejujuran, Keberanian (Resilience), Mutu (Ketelitian), Pertumbuhan (Pembelajar), dan Keberpihakan pada komunitas.<br>
+                </p>
+
+                <h3>Identitas Naratif</h3>
+                <p>
+                    Dulu, aku melihat diriku sebagai "Sang Peserta yang Ragu". Ceritaku adalah tentang menjadi bagian dari organisasi atau kepanitiaan (E), belajar banyak hal (P), namun masih terbayangi oleh rasa takut akan kegagalan. Aku memiliki keyakinan diri, namun keyakinan itu mudah goyah saat menghadapi rintangan besar.<br>
+                    <br>
+                    Kini, aku sadar narasiku telah berevolusi. Aku melihat diriku sebagai "Sang Pemimpin Pembelajar yang Tangguh".<br>
+                    <br>
+                    Ceritaku bukan lagi tentang menghindari kegagalan; ini tentang belajar dari kegagalan (E). Aku menemukan bahwa Resilience (S) adalah kekuatanku yang sebenarnya. Pengalaman di organisasi (E) mengajarkanku bahwa Kepemimpinan (A) dan kemampuan Mengajar (A) adalah cara terbaik untuk mewujudkan misi Pendidikan dan Pengabdian Masyarakat (H).<br>
+                    <br>
+                    Aku belajar bahwa skill terpenting bukanlah sekadar teliti dalam melaksanakan tugas, tapi memiliki visi Strategis (P) dan keberanian untuk memimpin secara Kolaboratif (P) untuk mencapai tujuan bersama.
+                </p>
             </section>
 
             <section id="review" class="content-section">
@@ -477,9 +516,6 @@
                             Wawasan (Insight): 5 (Sangat Baik)<br>
                             <strong>Skor Rata-rata: 5.0 / 5.0</strong>
                         </p>
-                        <p>
-                            <strong>Saran Perbaikan:</strong> Tidak ada.
-                        </p>
                     </div>
 
                     <div class="card">
@@ -494,9 +530,6 @@
                             Humor: 5 (Sangat Baik - pilihan nada yang relevan dan efektif)<br>
                             Inspirasi: 5 (Sangat Baik)<br>
                             <strong>Skor Rata-rata: 5.0 / 5.0</strong>
-                        </p>
-                        <p>
-                            <strong>Saran Perbaikan:</strong> Tidak ada.
                         </p>
                     </div>
 
@@ -513,9 +546,6 @@
                             Inspirasi: 5 (Sangat Baik)<br>
                             <strong>Skor Rata-rata: 5.0 / 5.0</strong>
                         </p>
-                        <p>
-                            <strong>Saran Perbaikan:</strong> Tidak ada.
-                        </p>
                     </div>
 
                     <div class="card">
@@ -530,9 +560,6 @@
                             Pengembangan Narasi: 5 (Sangat Baik)<br>
                             Inspirasi: 5 (Sangat Baik)<br>
                             <strong>Skor Rata-rata: 5.0 / 5.0</strong>
-                        </p>
-                        <p>
-                            <strong>Saran Perbaikan:</strong> Tidak ada.
                         </p>
                     </div>
 
@@ -550,11 +577,10 @@
                             Rekomendasi Perbaikan: 5 (Sangat konkret & aplikatif)<br>
                             <strong>Skor Rata-rata: 5.0 / 5.0</strong>
                         </p>
-                        <p>
-                            <strong>Saran Perbaikan:</strong> Tidak ada.
-                        </p>
                     </div>
-                </div> <h3>SKOR</h3>
+                </div> 
+
+                <h3>SKOR</h3>
                 <p style="text-align: left;">
                     Perhitungan skor setiap TUGAS dan kontribusinya pada skor CPMK berdasarkan Tabel 1.
                 </p>
@@ -577,10 +603,252 @@
                     <a href="https://docs.google.com/spreadsheets/d/1pEZq6F6ZLg261FceIIGxfyE5VlswdIenYF_lAPYCYME/edit?usp=sharing">Klik di sini untuk membuka file</a>
                 </p>
             </section>
+
+            <section id="uas1" class="content-section">
+                <h2>UAS 1 - My Concepts</h2>
+
+                <img src="mahakarya.png" alt="Ilustrasi Nusantara AI-Literacy Hub" class="innovation-image">
+                <p>
+                    Konsep saya tentang “Mahakarya Literasi” melampaui sekadar pemberantasan buta huruf atau pembangunan sekolah fisik semata; ia adalah sebuah restorasi hakikat kemanusiaan melalui digital equity. Masalah global ke-8 ini, krisis pendidikan dan buta huruf yang menjerat sekitar 750 juta orang dewasa atau 10% populasi dunia, pada intinya bukanlah sekadar ketiadaan infrastruktur gedung, melainkan ketiadaan akses terhadap “kode sumber” peradaban itu sendiri. Untuk membebaskan potensi ratusan juta manusia yang terbuang sia-sia, kita harus mengorkestrasi tiga komponen fundamental dalam arsitektur konseptual The Trinity of Accessible Enlightenment (Tritunggal Pencerahan yang Terakses).
+                </p>
+                
+                <div class="card-grid-wide">
+                    <div class="card">
+                        <h4>❤️ Hati (Kecerdasan Empati / Humanitas)</h4>
+                        <p>Ini adalah Axiological Foundation (Landasan Nilai) dari konsep saya. “Hati” di sini berakar pada prinsip bahwa pendidikan adalah proses “memanusiakan manusia”. Komponen ini berfungsi sebagai kompas moral yang mendefinisikan "mengapa" masalah ini layak diselesaikan:</p>
+                        <ul>
+                            <li><strong>Menolak Ketidakadilan:</strong> Jika 750 juta orang tertinggal karena tidak bisa membaca, itu adalah kegagalan kolektif kita, bukan kegagalan individu mereka.</li>
+                            <li><strong>Menghargai Potensi:</strong> Tanpa intervensi, potensi jenius yang lahir di daerah terpencil akan hilang begitu saja. "Hati" menuntut kita untuk menciptakan solusi yang inklusif, bukan elitis.</li>
+                            <li><strong>Empati dalam Desain:</strong> Memastikan teknologi dirancang dengan memahami kesulitan hidup masyarakat miskin, bukan sekadar memindahkan kurikulum kota ke desa.</li>
+                        </ul>
+                    </div>
+                    <div class="card">
+                        <h4>🧠 Pikiran (Kecerdasan Adaptif / Artificial Intelligence)</h4>
+                        <p>Ini adalah The Democratization of Personalized Learning. Di sinilah "Pikiran" bekerja melalui simbiosis manusia dan mesin. AI berperan sebagai Synergistic Enabler yang mengatasi keterbatasan jumlah guru dan sekolah fisik melalui mekanisme berikut:</p>
+                        <ul>
+                            <li><strong>AI sebagai Tutor Personal:</strong> Menghadirkan pendamping belajar yang sabar, tersedia 24/7, dan mampu beradaptasi dengan kecepatan belajar individu (adaptive learning), sesuatu yang sulit dilakukan dalam kelas massal konvensional.</li>
+                            <li><strong>Penghancur Barier Bahasa:</strong> Menggunakan kemampuan Natural Language Processing (NLP) untuk menerjemahkan materi pengetahuan global ke dalam bahasa daerah setempat secara otomatis, sehingga "buah" pengetahuan bisa dipetik tanpa hambatan bahasa.</li>
+                            <li><strong>Efisiensi Kognitif:</strong> AI menangani tugas repetitif (pengajaran dasar, koreksi latihan), membiarkan manusia (mentor lokal) fokus pada motivasi dan pembangunan karakter.</li>
+                        </ul>
+                    </div>
+                    <div class="card">
+                        <h4>⚡ Tenaga (Kecerdasan Kontekstual / Infrastruktur)</h4>
+                        <p>Ini adalah “apa” yang menggerakkan solusi di lapangan—sebuah Resilient Architecture. Kita tidak bisa memaksakan “Tenaga” infrastruktur kota (internet kencang, perangkat mahal) ke desa tertinggal. Maka, "Tenaga" di sini dikelola menjadi:</p>
+                        <ul>
+                            <li><strong>Arsitektur Offline-First:</strong> Sistem yang dirancang untuk tetap berfungsi penuh tanpa koneksi internet yang stabil, menyimpan "energi" pengetahuan secara lokal.</li>
+                            <li><strong>Low-Resource Computing:</strong> Memastikan sistem dapat berjalan di perangkat sederhana yang dimiliki masyarakat berpenghasilan rendah, bukan gadget high-end.</li>
+                            <li><strong>Knowledge Marketplace:</strong> Sebuah mesin operasional yang memungkinkan pertukaran nilai nyata—di mana kebutuhan belajar (need) bertemu dengan solusi praktis (value) secara efisien.</li>
+                        </ul>
+                    </div>
+                </div>
+                <br>
+                <p>
+                    Oleh karena itu, Mahakarya Rekayasa Sistem dan TI di era AI ini, Nusantara AI-Literacy Hub, bukanlah upaya menggantikan peran guru dengan algoritma dingin. Mahakarya ini adalah sistem sosio-teknis yang menyelaraskan Hati (hak asasi), memperkuat Pikiran (personalisasi AI), dan mengelola Tenaga (infrastruktur tangguh) untuk memastikan pelita pengetahuan dapat menyala di setiap sudut nusantara.
+                </p>
+            </section>
+
+            <section id="uas2" class="content-section">
+                <h2>UAS 2 - My Opinions</h2>
+                <p>
+                    Fakta bahwa 750 juta orang dewasa masih buta huruf adalah tamparan keras di tengah euforia kecerdasan buatan saat ini. Ini bukan sekadar data statistik, melainkan krisis kemanusiaan di mana jutaan potensi jenius mati suri hanya karena lahir di tempat dengan infrastruktur minim. Pertanyaannya sekarang bukan lagi "mengapa mereka tertinggal?", tetapi "apa tindakan konkret kita untuk menjemput mereka?". Kita tidak bisa diam menikmati kemewahan digital sementara sebagian saudara kita terisolasi dari pengetahuan.
+                </p>
+                <p>
+                    Menurut pandangan saya, kita harus berhenti menganggap teknologi sebagai entitas netral. Setiap rancangan sistem adalah keberpihakan. Berikut adalah tiga sikap krusial yang harus kita ambil:
+                </p>
+
+                <div class="card-grid-wide">
+                    <div class="card">
+                        <h4>1. Ubah Fokus: Desain untuk Pinggiran, Bukan Cuma Pusat</h4>
+                        <p>
+                            Sebagai mahasiswa ITB, kita harus membuang mentalitas "menara gading". Teknologi tidak boleh elitis. Sikap terbaik adalah menerapkan contextual engineering: jangan memaksakan infrastruktur kota ke desa. Kita butuh solusi yang offline-first dan berjalan mulus di perangkat low-end. Jika warga desa menolak teknologi, seringkali bukan karena mereka anti-perubahan, tapi karena solusi kita gagal memahami realitas hidup mereka. Teknologi harus melayani mereka yang paling tidak terlayani.
+                        </p>
+                    </div>
+                    <div class="card">
+                        <h4>2. Redefinisi AI: Amplifier, Bukan Pengganti</h4>
+                        <p>
+                            Kita harus tegas: AI hanyalah alat bantu (enabler), bukan pengganti esensi pendidikan. AI tidak punya "hati" untuk mendidik. Maka, posisikan AI sebagai "Exoskeleton" bagi guru di pedalaman, biarkan mesin mengurus terjemahan bahasa atau administrasi repetitif, supaya guru bisa fokus penuh pada tugas manusiawinya: membangun karakter dan memotivasi siswa. Kolaborasi manusia-mesin ini adalah kunci, bukan substitusi total.
+                        </p>
+                    </div>
+                    <div class="card">
+                        <h4>3. Prioritaskan Keadilan Sistemik di Atas Efisiensi</h4>
+                        <p>
+                            Sistem pendidikan yang memukul rata "satu ukuran untuk semua" itu efisien, tapi tidak adil. Kita harus berani merancang sistem adaptif (personalized learning) yang menghargai kecepatan belajar unik setiap individu. Ini adalah bentuk perlawanan terhadap kesia-siaan potensi manusia. Misi kita bukan sekadar mencetak lulusan massal, tapi memastikan tidak ada lagi "Mutiara Hitam" dari pelosok yang terbuang hanya karena sistem kita terlalu kaku untuk mengakomodasi mereka.
+                        </p>
+                    </div>
+                </div>
+                <br>
+                <p>
+                    <strong>Penutup: Kode dengan Nurani.</strong> Pada akhirnya, runtuhnya tembok kebodohan ini tidak akan terjadi karena keajaiban chip silikon semata, melainkan karena keputusan sadar dari kita, para arsitek sistemnya. Setiap baris kode yang kita tulis adalah sebuah pilihan: apakah kita sedang membangun jembatan akses atau justru mempertinggi tembok pemisah? Teknologi hanyalah wadah kosong; kitalah yang harus mengisinya dengan empati. Kita tidak butuh sekadar sistem yang lebih cerdas, kita butuh sistem yang lebih berhati nurani untuk memanusiakan manusia.
+                </p>
+            </section>
+
+            <section id="uas3" class="content-section">
+                <h2>UAS 3 - My Innovations</h2>
+                <img src="innovation.png" alt="Ilustrasi Nusantara AI-Literacy Hub" class="innovation-image">
+                <h3>Nama Inovasi: Nusantara AI-Literacy Hub: A Decentralized Knowledge Marketplace</h3>
+                <p>
+                    Inovasi sejati di era Artificial Intelligence bukanlah tentang menciptakan teknologi yang semakin rumit dan mahal, melainkan tentang Value Innovation—penciptaan nilai baru yang radikal dengan biaya yang terjangkau. Selama ini, sistem pendidikan kita bersifat top-down: kurikulum dibuat di pusat kota dan didistribusikan ke daerah tanpa mempedulikan relevansi lokal. Akibatnya, terjadi disconnect yang masif; petani di desa diajarkan teori yang tidak membumi, sementara kebutuhan literasi fungsional mereka terabaikan.
+                </p>
+                <p>
+                    Untuk menjawab kegagalan distribusi pengetahuan ini, saya mengajukan Nusantara AI-Literacy Hub. Ini bukan sekadar aplikasi e-learning, melainkan sebuah ekosistem Knowledge Marketplace yang mendemokratisasi produksi dan konsumsi pengetahuan melalui mekanisme berikut:
+                </p>
+
+                <div class="card-grid-wide">
+                    <div class="card">
+                        <h4>1. Mekanisme Value Co-creation (Penciptaan Nilai Bersama)</h4>
+                        <p>
+                            Sistem ini mengubah paradigma siswa dari "konsumen pasif" menjadi "produsen aktif". Inovasi ini bekerja layaknya pasar digital yang mempertemukan dua entitas utama:
+                        </p>
+                        <ul>
+                            <li><strong>Need Creators (Masyarakat 3T):</strong> Warga desa atau guru di pedalaman menginput masalah nyata yang mereka hadapi. Contoh: "Bagaimana cara membaca label dosis pestisida yang aman?" atau "Kami butuh modul matematika dasar yang menggunakan contoh dagang pasar, bukan saham."</li>
+                            <li><strong>Value Creators (Mahasiswa/AI):</strong> Mahasiswa (melalui program KKN Digital) atau sistem AI merespons "pesanan" tersebut dengan menciptakan Micro-Learning Modules. Produk ini bukan sekadar tugas kuliah, tapi solusi spesifik yang langsung menjawab kebutuhan Need Creators.</li>
+                        </ul>
+                    </div>
+                    <div class="card">
+                        <h4>2. Arsitektur "Sneakernet" & Edge AI</h4>
+                        <p>
+                            Tantangan terbesar di daerah 750 juta buta huruf adalah konektivitas. Inovasi ini menolak ketergantungan pada cloud terpusat.
+                        </p>
+                        <ul>
+                            <li><strong>Local Repository Node:</strong> Setiap desa dilengkapi dengan server mini murah (seperti Raspberry Pi) yang menyimpan materi lokal. Siswa bisa mengunduh materi ke perangkat murah mereka via Wi-Fi lokal tanpa butuh kuota internet.</li>
+                            <li><strong>AI Vernacular Engine:</strong> Mengintegrasikan model bahasa (NLP) ringan yang secara otomatis menerjemahkan materi pendidikan nasional ke dalam bahasa daerah setempat (Jawa, Sunda, Bugis, Papua), meruntuhkan tembok bahasa yang selama ini menghalangi pemahaman konsep.</li>
+                        </ul>
+                    </div>
+                    <div class="card">
+                        <h4>3. Produk Pengetahuan sebagai Aset Abadi</h4>
+                        <p>
+                            Dalam sistem ini, setiap interaksi menghasilkan Artefak Pengetahuan yang nyata. Modul yang dibuat oleh mahasiswa tahun ini tidak akan hilang di tumpukan arsip dosen, tetapi tersimpan abadi di server desa sebagai pustaka digital yang bisa diakses generasi berikutnya. Ini menciptakan siklus sustainable knowledge di mana desa perlahan membangun perpustakaan digitalnya sendiri yang relevan dengan kearifan lokal mereka, bukan perpustakaan asing yang tidak mereka pahami.
+                        </p>
+                    </div>
+                </div>
+                <br>
+                <p>
+                    <strong>Penutup: Dari Menara Gading ke Lumbung Desa.</strong> Pada akhirnya, Nusantara AI-Literacy Hub adalah manifestasi dari teknologi yang berhamba pada kemanusiaan. Inovasi ini tidak diukur dari seberapa canggih algoritma yang digunakan, tetapi dari seberapa banyak "aha moments" yang tercipta di wajah anak-anak pedalaman saat mereka akhirnya memahami pelajaran. Kita sedang membangun jembatan digital yang mengubah "tugas kuliah" mahasiswa menjadi "solusi hidup" bagi masyarakat. Inilah esensi rekayasa sesungguhnya: bukan sekadar memindahkan bit dan byte, tetapi memindahkan nasib suatu bangsa melalui pemerataan cahaya pengetahuan.
+                </p>
+            </section>
+
+            <section id="uas4" class="content-section">
+                <h2>UAS 4 - My Knowledge</h2>
+                <p>
+                    Untuk menuntaskan krisis buta aksara yang menjerat 750 juta orang dewasa, metode pengajaran massal "satu ukuran untuk semua" telah terbukti gagal. Oleh karena itu, saya mengembangkan VERNA-LEARN (Vernacular-based Learning Architecture). Ini adalah metodologi pedagogis adaptif yang dirancang untuk memecahkan "Paradoks Skalabilitas Kontekstual".
+                </p>
+                <p>
+                    Paradoksnya adalah ini: Bagaimana kita bisa mendistribusikan standar pendidikan global yang berkualitas tinggi ke daerah terpencil, tanpa kehilangan relevansi lokal dan tanpa menuntut infrastruktur yang mustahil ada? Jika kita hanya mendigitalkan buku teks Jakarta untuk anak di Papua, kita mungkin mengirimkan data, tetapi kita tidak mengirimkan makna. Siswa memiliki akses, tetapi tidak memiliki pemahaman. Ini adalah kegagalan kognitif. VERNA-LEARN menyelesaikan ini dengan dua komponen utama: struktur pemetaan pengetahuan dan desain validasi kontekstual.
+                </p>
+
+                <div class="card-grid-wide">
+                    <div class="card">
+                        <h4>Struktur Kurikulum (Arsitektur Peta Pengetahuan)</h4>
+                        <ul>
+                            <li><strong>Peta Pengetahuan Primitif (The Seeds):</strong> Ini adalah Lapisan Deklaratif. Siswa di daerah 3T tidak membutuhkan teori abstrak yang melayang di awan. Namun, mereka tetap membutuhkan fondasi. Peta ini berisi "Benih Pengetahuan": alfabet, angka, fonetik dasar, dan kosa kata inti. Dalam sistem ini, Peta Primitif bukan sekadar hafalan mati, melainkan database aset digital yang telah dikompresi menjadi paket mikro (micro-packages) agar dapat disimpan di server lokal desa (offline repository). Ini memastikan bahwa bahan baku pengetahuan selalu tersedia, bahkan saat internet mati.</li>
+                            <li><strong>Peta Pengetahuan Aplikatif (The Fruits):</strong> Ini adalah Lapisan Pemecahan Masalah. Di sinilah letak revolusinya. Siswa harus menghubungkan "Benih" (alfabet/angka) untuk menghasilkan "Buah" (solusi hidup). Peta ini tidak berisi kurikulum standar, melainkan modul dinamis yang menjawab kebutuhan hidup sehari-hari: "Bagaimana membaca surat tanah", "Cara menghitung untung panen", atau "Memahami dosis obat". Kurikulum di lapisan ini disusun bukan berdasarkan bab buku, melainkan berdasarkan masalah nyata yang diinput oleh Need Creators (masyarakat desa) dalam ekosistem Knowledge Marketplace.</li>
+                        </ul>
+                    </div>
+                    <div class="card">
+                        <h4>Proses Validasi (The Bloom-Bridge Cycle)</h4>
+                        <p>
+                            Pembelajaran dalam Nusantara AI-Literacy Hub tidak mengikuti garis lurus ujian semester; ia mengikuti siklus Bloom-Bridge. Siswa memulai dari Level Bawah (Mengingat & Memahami) dengan mengakses Peta Primitif di perangkat low-end mereka. Namun, sistem tidak mengizinkan mereka "lulus" hanya dengan menjawab kuis pilihan ganda. Untuk membuktikan penguasaan, siswa harus naik ke Level Atas (Menerapkan, Menganalisis, Mencipta). Mereka harus mendemonstrasikan "Rantai Relevansi":
+                        </p>
+                        <ul>
+                            <li><strong>Bukti Aplikasi:</strong> Siswa merekam video singkat atau foto (menggunakan fitur low-bandwidth upload) yang menunjukkan mereka menggunakan kemampuan baca-tulis itu di dunia nyata.</li>
+                            <li><strong>Validasi Komunitas:</strong> Mentor lokal atau sesama pengguna memverifikasi apakah solusi itu berhasil (misalnya: "Ya, hitungan pupuknya benar").</li>
+                        </ul>
+                        <p>Dengan demikian, validasi bukan terjadi di atas kertas ujian, tapi di ladang, di pasar, dan di rumah.</p>
+                    </div>
+                    <div class="card">
+                        <h4>Penyelesaian Paradoks (Pemihakan pada Konteks Lokal)</h4>
+                        <p>
+                            Inilah inti dari VERNA-LEARN. Agen AI (Vernacular Engine) yang menjadi otak sistem ini dirancang dengan "Context-First Constraint". Ini adalah pemihakan desain yang radikal. AI penerjemah dilarang melakukan penerjemahan harfiah (word-for-word) dari materi global. Sebaliknya, ia diwajibkan secara algoritmik untuk mencari analogi lokal yang relevan.
+                        </p>
+                        <p>
+                            Jika materi asli menjelaskan konsep matematika menggunakan "Apel dan Kereta Api" (yang mungkin asing bagi anak pulau terpencil), Agen AI akan secara otomatis mengubah narasi soal menjadi "Ikan dan Perahu", sesuai dengan data demografis lokasi pengguna. Agen VERNA-LEARN tidak akan sekadar mendiktekan: "Ini artinya X." Sebaliknya, ia akan memprovokasi pemahaman dengan bertanya: "Di desamu, benda apa yang fungsinya mirip dengan ini?" Dengan demikian, sistem ini menggunakan kecerdasan buatan bukan untuk memaksakan budaya pusat, tetapi untuk mengamplifikasi kearifan lokal, memaksa siswa untuk menjadi Subjek Berdaulat atas pengetahuan mereka sendiri, bukan sekadar objek pasif dari kurikulum nasional.
+                        </p>
+                    </div>
+                </div>
+            </section>
+
+            <section id="uas5" class="content-section">
+                <h2>UAS 5 - My Professional Reviews</h2>
+                
+                <p>Berikut cara saya melakukan review: menggunakan ChatGPT untuk melakukan self-assessment reflektif pada setiap tugas.</p>
+                
+                <p>Saya mengattach rubrik penilaian setiap tugas dari UAS-1 s.d. UAS-5, disertai perintah:</p>
+                <div style="background-color: #eef; padding: 15px; border-left: 5px solid #3498db; margin: 15px 0; font-style: italic;">
+                    "Lakukan self-assess untuk UAS-1, UAS-2, UAS-3, UAS-4, dan UAS-5 berdasarkan konten di situs portofolio pribadi saya dan nilai setiap bagian menggunakan kriteria rubrik yang saya lampirkan."
+                </div>
+
+                <p>ChatGPT melakukan self-assessment UAS-1 s.d. UAS-5 langsung dari laman yang saya berikan dan menilai memakai rubrik tugas UAS (skala 1–5 per kriteria).</p>
+                <p>Rekap skor siap diunduh sebagai CSV: <a href="https://drive.google.com/file/d/1YxPDtQFpChqsWHQt6w7QgTOVbUwxNo9q/view?usp=sharing" class="btn-download" download>Download CSV Ringkasan</a></p>
+
+                <h3>Identifikasi</h3>
+                <p>
+                    <strong>Nama dan NIM Penulis:</strong> Kenneth Moses Saragih - 18224093<br>
+                    <strong>Penilai:</strong> Self-assessment (Kenneth Moses Saragih)<br>
+                    <strong>Catatan Cakupan:</strong> Halaman navigasi ke "My Concepts", "My Opinions", "My Innovations", "My Knowledge", dan "My Professional Reviews" tersedia.
+                </p>
+
+                <h3>Tinjauan Umum</h3>
+                <p><strong>UAS-1 (My Concepts)</strong> memuat krisis literasi global 750 juta orang dan menawarkan solusi arsitektur "The Trinity of Accessible Enlightenment" yang menyelaraskan hati, pikiran, dan tenaga infrastruktur.</p>
+                <p><strong>UAS-2 (My Opinions)</strong> merumuskan sikap etis "contextual engineering" di mana teknologi tidak boleh elitis dan AI harus berfungsi sebagai amplifier kapasitas manusia (guru), bukan pengganti.</p>
+                <p><strong>UAS-3 (My Innovations)</strong> menjelaskan "Nusantara AI-Literacy Hub", sebuah sistem Knowledge Marketplace terdesentralisasi yang memberdayakan masyarakat 3T untuk menjadi produsen pengetahuan melalui mekanisme Value Co-creation.</p>
+                <p><strong>UAS-4 (My Knowledge)</strong> menjabarkan metodologi pedagogis "VERNA-LEARN" yang menggunakan validasi kontekstual (Bloom-Bridge Cycle) untuk memastikan pendidikan global relevan secara lokal.</p>
+                <p><strong>UAS-5 (My Professional Reviews)</strong> mendokumentasikan metode asesmen diri yang reflektif menggunakan bantuan AI untuk memastikan standar "Masterpiece".</p>
+
+                <h3>Tinjauan Spesifik + Skor (1-5)</h3>
+
+                <div class="card-grid-wide">
+                    <div class="card">
+                        <h4>UAS-1 (My Concepts)</h4>
+                        <p><strong>Skor per kriteria:</strong> Kejelasan 5, Logika 5, Validitas 5, Kegunaan 5 → <strong>Total 20/20 (100%)</strong></p>
+                        <br>
+                        <p><strong>Alasan singkat:</strong> Konsep ini sangat kuat karena tidak hanya berbicara jargon teknis, tetapi membedah anatomi masalah sosial (buta huruf) dengan kerangka solusi sistemik yang valid (data 750 juta orang) dan logis (pemisahan transfer ilmu dari gedung fisik).</p>
+                        <p><strong>Saran perbaikan:</strong> Bisa ditambahkan ilustrasi diagram arsitektur untuk memvisualisasikan hubungan antara Hati, Pikiran, dan Tenaga.</p>
+                    </div>
+
+                    <div class="card">
+                        <h4>UAS-2 (My Opinions)</h4>
+                        <p><strong>Skor per kriteria:</strong> Menarik 5, Informatif 5, Persuasif 5, Menggugah 5 → <strong>Total 20/20 (100%)</strong></p>
+                        <br>
+                        <p><strong>Alasan singkat:</strong> Tulisan sangat persuasif karena menantang status quo "menara gading" mahasiswa ITB. Argumen tentang "AI sebagai Exoskeleton" adalah metafora yang brilian dan sangat menggugah kesadaran etis insinyur.</p>
+                        <p><strong>Saran perbaikan:</strong> Tambahkan studi kasus singkat tentang kegagalan proyek teknologi yang tidak memperhatikan konteks lokal sebagai pembanding.</p>
+                    </div>
+
+                    <div class="card">
+                        <h4>UAS-3 (My Innovations)</h4>
+                        <p><strong>Skor per kriteria:</strong> Nilai Guna 5, Kebaruan 5, Desain & Kelayakan 5, Dampak 5 → <strong>Total 20/20 (100%)</strong></p>
+                        <br>
+                        <p><strong>Alasan singkat:</strong> Inovasi Knowledge Marketplace yang digabungkan dengan arsitektur offline-first (Sneakernet) menunjukkan kebaruan yang tinggi karena menyasar blindspot infrastruktur yang sering dilupakan pengembang kota.</p>
+                        <p><strong>Saran perbaikan:</strong> Penjelasan teknis mengenai spesifikasi minimum perangkat "Raspberry Pi" bisa diperdalam untuk aspek kelayakan teknis.</p>
+                    </div>
+
+                    <div class="card">
+                        <h4>UAS-4 (My Knowledge)</h4>
+                        <p><strong>Skor per kriteria:</strong> Kurasi Pengetahuan 5, Keterjelasan 5, Akurasi 5, Daya Guna 5 → <strong>Total 20/20 (100%)</strong></p>
+                        <br>
+                        <p><strong>Alasan singkat:</strong> Metodologi VERNA-LEARN yang melarang penerjemahan harfiah (Context-First Constraint) menunjukkan kedalaman pemahaman pedagogis yang luar biasa, mengubah data menjadi makna.</p>
+                        <p><strong>Saran perbaikan:</strong> Sertakan referensi teori pendidikan (seperti Vygotsky atau Freire) untuk memperkuat landasan akademis pedagogi kritisnya.</p>
+                    </div>
+                </div>
+
+                <h3>Rekap Skor (Ringkas)</h3>
+                <ul style="list-style-type: none; padding: 0;">
+                    <li><strong>UAS-1:</strong> 20/20 → 100%</li>
+                    <li><strong>UAS-2:</strong> 20/20 → 100%</li>
+                    <li><strong>UAS-3:</strong> 20/20 → 100%</li>
+                    <li><strong>UAS-4:</strong> 20/20 → 100%</li>
+                </ul>
+
+                <h3>Rekap Skor Peer Assessment</h3>
+                <p>Berikut hasil penilaian peer assessment untuk UAS-1 sampai dengan UAS-4:</p>
+                <p><a href="https://docs.google.com/spreadsheets/d/1kM313QybMHcW0eizU7CMBrgT-s9v-3xZbd9zCceqsHE/edit?usp=sharing" style="color: #3498db; text-decoration: none; font-weight: bold;">[UAS Skor Peer Assessment]</a></p>
+
+            </section>
+
             <footer>
                 <p>&copy; 2025 Kenneth Moses Saragih | Institut Teknologi Bandung</p>
             </footer>
 
-        </div> </div> </body>
-
+        </div>
+    </div>
+</body>
 </html>
